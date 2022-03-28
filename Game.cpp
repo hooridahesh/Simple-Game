@@ -7,18 +7,18 @@ using namespace std;
 
 class Entity {
 protected:
-	int width_rectangel;
-	int height_rectangel;
-	HWND myconsole = GetConsoleWindow();
-	HDC hdc = GetDC(myconsole);
+    int width_rectangel;
+    int height_rectangel;
+    HWND myconsole = GetConsoleWindow();
+    HDC hdc = GetDC(myconsole);
 public:
-	Entity();
-	void drawRectangle(int x, int y, int height, int width, COLORREF color);
+    Entity();
+    void drawRectangle(int x, int y, int height, int width, COLORREF color);
 };
 
-Entity::Entity(){
-	width_rectangel=450;
-	height_rectangel=300;
+Entity::Entity() {
+    width_rectangel = 450;
+    height_rectangel = 300;
 }
 void Entity::drawRectangle(int x, int y, int height, int width, COLORREF color) {
     for (int i = -width / 2; i < width / 2; i++)
@@ -33,14 +33,14 @@ void Entity::drawRectangle(int x, int y, int height, int width, COLORREF color) 
     }
 }
 
-class Player:public Entity {
+class Player :public Entity {
 protected:
     int width_circle;
     int height_circle;
 public:
     Player() {
-        width_circle=227;
-        height_circle=452;
+        width_circle = 227;
+        height_circle = 452;
     }
     void drawCircle(int x, int y, int radius, COLORREF color);
 };
@@ -52,7 +52,7 @@ void Player::drawCircle(int x, int y, int radius, COLORREF color) {
     }
 }
 
-class Item {
+class Item :public Player {
 protected:
     //vector <int> First = {220,125};
     int x1 = 220;
@@ -61,33 +61,13 @@ protected:
     int y2 = 146;
     int x3 = 659;
     int y3 = 135;
-    HWND myconsole = GetConsoleWindow();
-    HDC hdc = GetDC(myconsole);
-public:
-    void drawItem(int x, int y, int height, int width, COLORREF color);
-};
-
-void Item::drawItem(int x, int y, int height, int width, COLORREF color) {
-    for (int i = -width / 2; i < width / 2; i++)
-    {
-        SetPixel(hdc, x + i, y - height / 2, color);
-        SetPixel(hdc, x + i, y + height / 2, color);
-    }
-    for (int j = -height / 2; j < height / 2; j++)
-    {
-        SetPixel(hdc, x - width / 2, y + j, color);
-        SetPixel(hdc, x + width / 2, y + j, color);
-    }
-}
-
-
-class Run :public Item, public Player {
 public:
     void run();
 };
 
-void Run::run() {
-    bool flag1=false, flag2=false, flag3=false;
+void Item::run() {
+
+    bool flag1 = false, flag2 = false, flag3 = false;
 
     while (1) {
 
@@ -101,13 +81,13 @@ void Run::run() {
         }
 
         drawCircle(width_circle, height_circle, 45, RGB(255, 0, 0));
-        drawItem(x1, y1, 30, 50, RGB(255, 255, 0));
-        drawItem(x2, y2, 38, 60, RGB(192, 192, 192));
-        drawItem(x3, y3, 48, 20, RGB(111, 49, 152));
+        drawRectangle(x1, y1, 30, 50, RGB(255, 255, 0));
+        drawRectangle(x2, y2, 38, 60, RGB(192, 192, 192));
+        drawRectangle(x3, y3, 48, 20, RGB(111, 49, 152));
         drawRectangle(width_rectangel, height_rectangel, 400, 550, RGB(0, 255, 0));
 
         Sleep(500);
-        
+
         if (flag1 == false) {
             //x1 += 0;
             y1 += 17;
@@ -117,7 +97,7 @@ void Run::run() {
             //x2 += 0;
             y2 += 30;
         }
-        
+
         if (flag3 == false) {
             //x3 += 0;
             y3 += 12;
@@ -133,21 +113,21 @@ void Run::run() {
             flag1 = true;
         }
         else if (y2 >= 400 && (width_circle >= 450 - 45 && width_circle <= 450 + 45)) {
-            x2 =45;
-            y2 =95;
+            x2 = 45;
+            y2 = 95;
             flag2 = true;
         }
         else if (y3 >= 387 && (width_circle >= 650 - 45 && width_circle <= 650 + 45)) {
-            x3 =32;
-            y3 =150;
+            x3 = 32;
+            y3 = 150;
             flag3 = true;
         }
         else if (flag1 == true && flag2 == true && flag3 == true) {
-            cout << "You won =))"<<endl;
+            cout << "You won =))" << endl;
             break;
         }
         else if (y1 >= 485) {
-            cout<<"gameover"<<endl;
+            cout << "gameover" << endl;
             break;
         }
         else if (y2 >= 486) {
@@ -162,7 +142,7 @@ void Run::run() {
 }
 
 int main() {
-    Run game;
-    game.run();
+    Item s;
+    s.run();
     return 0;
 }
