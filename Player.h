@@ -1,15 +1,17 @@
 #ifndef PLAYER_H
 #define PLAYET_H
-#include <windows.h>
 #include "Entity.h"
 
-class Player :virtual public Entity {
-protected:
-    int width_circle;
-    int height_circle;
+class Player :public Entity {
+private:
+    int width_circle = 210;
+    int height_circle = 452;
+    int radius = 45;
 public:
-    Player();
-    void drawCircle(int x, int y, int radius, COLORREF color);
+
+    void draw(int x, int y, COLORREF color);
+    int* getWidth();
+    int* getHeight();
 };
 
 #endif 
