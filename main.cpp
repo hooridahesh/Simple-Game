@@ -42,7 +42,7 @@ int main() {
         timePrevious = timeNow;
         timeNow = GetTickCount64();
 
-        cout << "Get 15 items to win ";
+        cout << "Get 8 items to win ";
 
         earth = &e;
         player = &p;
@@ -59,13 +59,15 @@ int main() {
         ih[2] += 15;
 
         if (_kbhit()) {                       //move player
-            switch (_getch()) {
-            case 'd':
-                pw[0] += 50;
-                break;
-            case 'a':
-                pw[0] -= 50;
-                break;
+            if (pw[0]>150 && pw[0]<780) {
+                switch (_getch()) {
+                case 'd':
+                    pw[0] += 50;
+                    break;
+                case 'a':
+                    pw[0] -= 50;
+                    break;
+                }
             }
         }
 
@@ -125,7 +127,7 @@ int main() {
             flag3 = true;
             score++;
         }
-        else if (score == 15) {
+        else if (score == 8) {
             system("cls");
             cout << "You won =))" << endl;
             break;
