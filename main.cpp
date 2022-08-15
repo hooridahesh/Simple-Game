@@ -35,6 +35,7 @@ int main() {
     x2 = makeRandom();
     x3 = makeRandom();
     int score = 0;
+    int x = 0;
 
     while (1) {
 
@@ -42,7 +43,9 @@ int main() {
         timePrevious = timeNow;
         timeNow = GetTickCount64();
 
-        cout << "Get 8 items to win ";
+        system("Color 03");
+        cout << "Get 8 items to win " << endl << endl;
+        cout << "Your current score : " << x<<endl;
 
         earth = &e;
         player = &p;
@@ -113,42 +116,48 @@ int main() {
             //b1 = true;
             flag1 = true;
             score++;
+            x = score;   
         }
         if (ih[1] >= ph[0] - 60 && (pw[0] >= x2 - 45 && pw[0] <= x2 + 45)) {
             ih[1] = 125;
             //b2 = true;
             flag2 = true;
             score++;
-
+            x = score;
         }
         if (ih[2] >= ph[0] - 60 && (pw[0] >= x3 - 45 && pw[0] <= x3 + 45)) {
             ih[2] = 135;
             //b1 = true;
             flag3 = true;
             score++;
+            x = score;
         }
         else if (score == 8) {
             system("cls");
-            cout << "You won =))" << endl;
+            system("Color 02");
+            cout << "You won =))" << endl<<endl;
             break;
         }
         else if (ih[0] >= 485) {
             system("cls");
-            cout << "gameover" << endl;
+            system("Color 04");
+            cout << "gameover" << endl<<endl;
             break;
         }
         else if (ih[1] >= 486) {
             system("cls");
-            cout << "gameover" << endl;
+            system("Color 04");
+            cout << "gameover" << endl<<endl;
             break;
         }
         else if (ih[2] >= 475) {
             system("cls");
-            cout << "gameover" << endl;
+            system("Color 04");
+            cout << "gameover" << endl<<endl;
             break;
         }
 
-        Sleep(60);
+        Sleep(80);
 
         system("cls");
     }
