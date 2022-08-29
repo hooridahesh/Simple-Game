@@ -1,6 +1,6 @@
 # Simple-Game
-.....
-#### A view of the game:
+.....؟؟؟
+#### A view of the simple game:
 
 https://user-images.githubusercontent.com/80787976/187105173-15236080-db21-4e91-9554-07d1e021fbb6.mp4
 
