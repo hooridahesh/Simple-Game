@@ -1,4 +1,4 @@
-# Simple-Game
+# 🎮Simple-Game
 .....؟؟؟
 #### A view of the simple game:
 
